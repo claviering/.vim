@@ -1,3 +1,21 @@
+" Mysetting"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+:nmap <c-s> :w<CR>
+:vmap <c-s> <Esc><c-s>gv
+:imap <c-s> <Esc><c-s>map <c-s> :w<CR>
+:vmap <c-s> <Esc><c-s>gv
+:imap <c-s> <Esc><c-s>
+:set autowrite "auto write to disk"
+:set t_Co=256
+set conceallevel=2
+set concealcursor=vin
+execute pathogen#infect()
+let g:syntastic_python_python_exec = '/path/to/python3'
+let g:syntastic_html_tidy_exec = 'tidy5'
+let g:syntastic_enable_perl_checker = 1
+let g:syntastic_always_populate_loc_list = 1
+:inoremap <A-l> <Right>
+:inoremap <A-h> <Left>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set sw=4
 set ts=4
 set et
@@ -50,6 +68,7 @@ set go=             " 不要图形按钮
 "color zellner "设置背景主题  
 "color ron     " 设置背景主题  
 "color torte     " 设置背景主题  
+"color lilydjwg_dark
 "set guifont=Courier_New:h10:cANSI   " 设置字体  
 "autocmd InsertLeave * se nocul  " 用浅色高亮当前行  
 autocmd InsertEnter * se cul    " 用浅色高亮当前行  
@@ -153,10 +172,13 @@ func SetTitle()
     if expand("%:e") == 'cpp'
         call setline(1, "#include <iostream>")
         call setline(2, "using namespace std;")
-        call setline(3, "int main(){")
-        call setline(4, "    return 0;")
-        call setline(5, "}")
-        call setline(6, "")
+        call setline(3, "int main()")
+        call setline(4, "{")
+        call setline(5, "    return 0;")
+        call setline(6, "}")
+        call setline(7, "")
+        :normal 2j 
+        :normal o 
     endif
     if &filetype == 'c'
         call setline(1, "#include <stdio.h>")
@@ -179,8 +201,6 @@ func SetTitle()
     endif
     "新建文件后，自动定位到文件末尾
 endfunc 
-autocmd BufNewFile * normal 2j 
-autocmd BufNewFile * normal 0 
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -305,9 +325,9 @@ autocmd FileType c,cpp map <buffer> <leader><space> :w<cr>:make<cr>
 "代码补全 
 set completeopt=preview,menu 
 "允许插件  
-"filetype plugin on
+filetype plugin on
 "共享剪贴板  
-"set clipboard+=unnamed 
+set clipboard+=unnamed 
 "自动保存
 set autowrite
 set ruler                   " 打开状态栏标尺
@@ -356,21 +376,21 @@ set matchtime=1
 set scrolloff=3
 " 为C程序提供自动缩进
 "自动补全
-"":inoremap ( ()<ESC>i
-"":inoremap ) <c-r>=ClosePair(')')<CR>
-":inoremap { {<CR>}<ESC>O
-":inoremap } <c-r>=ClosePair('}')<CR>
-"":inoremap [ []<ESC>i
-"":inoremap ] <c-r>=ClosePair(']')<CR>
-"":inoremap " ""<ESC>i
-"":inoremap ' ''<ESC>i
-""function! ClosePair(char)
-""	if getline('.')[col('.') - 1] == a:char
-""		return "\<Right>"
-""	else
-""		return a:char
-""	endif
-""endfunction
+:inoremap ( ()<ESC>i
+:inoremap ) <c-r>=ClosePair(')')<CR>
+:inoremap { {<CR>}<ESC>O
+:inoremap } <c-r>=ClosePair('}')<CR>
+:inoremap [ []<ESC>i
+:inoremap ] <c-r>=ClosePair(']')<CR>
+:inoremap " ""<ESC>i
+:inoremap ' ''<ESC>i
+function! ClosePair(char)
+	if getline('.')[col('.') - 1] == a:char
+		return "\<Right>"
+	else
+		return a:char
+	endif
+endfunction
 filetype plugin indent on 
 "打开文件类型检测, 加了这句才可以用智能补全
 set completeopt=longest,menu
@@ -495,7 +515,7 @@ let NERDTreeIgnore=['\.pyc']
 function! PickRandomTheme()
 lua <<EOF
   math.randomseed(os.time())
-  local themes = {'256-jungle','dw_red','oceanlight','3dglasses','dw_yellow','olive','adam','earendel','osx_like','adaryn','earthburn','pablo','adobe','earth','pacific','adrian','eclipse','paintbox','advantage','eclm_wombat','PapayaWhip','af','edo_sea','peachpuff','aiseered','ekvoli','peaksea','anotherdark','elflord','peppers','ansi_blows','elise','phphaxor','aqua','elisex','phpx','ashen','emacs','pink','asmanian2','encoding','pleasant','asmanian_blood','enzyme','potts','asmdev2','evening','print_bw','asmdev','far','prmths','astronaut','fine_blue','professional','asu1dark','fnaqevan','proton','automation','fog','ps_color','autumn2','freya','pspad','autumnleaf','fruidle','putty','autumn','fruit','pyte','bandit','fruity','python','basic','gardener','quagmire','baycomb','gentooish','railscasts','bayQua','gobo','rainbow_autumn','beachcomber','golden','rainbow_breeze','beauty256','google','rainbow_fine_blue','bensday','gor','rainbow_fruit','billw','gothic','rainbow_neon','biogoo','grape','rainbow_night','black_angus','grayorange','rainbow_sea','blackbeauty','graywh','rastafari','blackboard','greens','rcg_gui','blackdust','Green','rcg_term','blacklight','greenvision','rdark','BlackSea','greyblue','README.txt','Black','guardian','redblack','blink','guepardo','redstring','Blue2','h80','Red','bluegreen','habiLight','refactor','blueprint','herald','relaxedgreen','blue','hhazure','reliable','bluez','hhdblue','reloaded','blugrine','hhdcyan','revolutions','bmichaelsen','hhdgray','robinhood','bog','hhdgreen','ron','borland','hhdmagenta','rootwater','breeze','hhdred','sand','brookstream','hhdyellow','satori','brown','hhorange','scite','BusyBee','hhpink','sean','buttercream','hhspring','seashell','bw','hhteal','sea','c16gui','hhviolet','seoul','calmar256-dark','ibmedit','settlemyer','calmar256-light','icansee','sf','camo','impactG','shine','campfire','impact','shobogenzo','candycode','industrial','sienna','candy','inkpot','sift','caramel','ironman','silent','carrot','jammy','simple256','carvedwoodcool','jellybeans','simpleandfriendly','carvedwood','jhdark','simple_b','charged-256','jhlight','simplewhite','charon','kaltex','skittles_dark','chela_light','kalt','Slate0','chlordane','kate','slate2','ChocolateLiquor','kellys','slate','ChocolatePapaya','khaki','smp','clarity','kib_darktango','softblue','cleanphp','kib_plastic','softlight','cloudy','koehler','soruby','clue','lanzarotta','soso','codeburn','lazarus','spectro','coffee','leo','spiderhawk','colorer','less','spring','colorful256','lettuce','stingray','colorful','lightcolors','summerfruit256','colorscheme_template','LightDefaultGrey','summerfruit','colorzone','LightDefault','surveyor','contrasty','LightTan','symfony','cool','Light','synic','corn','LightYellow','tabula','corporation','lilac','tango2','crt','lilydjwg_dark','tango-desert','cthulhian','lilydjwg_green','tango-morning','custom','lingodirector','tango','c','literal_tango','taqua','dante','louver','tcsoft','Dark2','lucius','telstar','darkblack','manxome','tetragrammaton','darkblue2','marklar','textmate16','darkblue','maroloccio2','thegoodluck','darkbone','maroloccio3','thestars','darkburn','maroloccio','tibet','DarkDefault','mars','tidy','darkdevel','martin_krischik','tolerable','darkdot','matrix','tomatosoup','darkeclipse','mellow','toothpik','darkerdesert','metacosm','torte','darker-robin','midnight2','transparent','darkocean','midnight','trivial256','darkrobot','miko','turbo','darkslategray','mint','tutticolori','darkspectrum','mod_tcsoft','t','darktango','molokai','twilight','Dark','montz','two2tango','darkzen','moria','umber-green','darkZ','morning','understated','dawn','motus','vanzan_color','default','MountainDew','vcbc','delek','mud','vc','delphi','murphy','vexorian','denim','native','vibrantink','derefined','nature','vividchalk','desert256','navajo-night','vj','desertedoceanburnt','navajo','void','desertedocean','nedit2','vylight','desertEx','nedit','wargrey','desert','neon','warm_grey','DevC++','neverness','watermark','deveiate','nicotine','White2','developer','nightflight2','whitedust','Dim2','nightflight','white','DimBlue','nightshade_print','widower','DimGreens','nightshade','win9xblueback','DimGreen','nightshimmer','wintersday','DimGrey','nightsky','winter','DimRed','night','wombat256','DimSlate','night_vision','wombat','Dim','nightVision','wood','django','nightwish','wuye','doorhinge','no_quarter','xemacs','doriath','northland','xian','dual','northsky','xoria256','dusk','norwaytoday','xterm16','dw_blue','nour','yeller','dw_cyan','nuvola','zellner','dw_green','oceanblack256','zenburn','dw_orange','oceanblack','zen','dw_purple','oceandeep','zmrok'}
+  local themes = {'256-jungle','colorful256','tomatosoup','blacklight','lilydjwg_dark','turbo','candycode'}
   local theme = string.format('color %s', themes[math.random(1,#themes)])
 vim.command(theme)
 EOF
@@ -507,3 +527,18 @@ if has('lua')
 else
   color railscasts
 end
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Put this at the top of your .vimrc to use Vundle. Remove plugins you don't need, they are for illustration purposes.
+set nocompatible              " be iMproved, required
+filetype off                  " required
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'L9'
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plugin 'mattn/emmet-vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/syntastic'
+call vundle#end()            " required
+filetype plugin indent on    " required
