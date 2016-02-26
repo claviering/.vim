@@ -13,8 +13,8 @@ let g:syntastic_python_python_exec = '/path/to/python3'
 let g:syntastic_html_tidy_exec = 'tidy5'
 let g:syntastic_enable_perl_checker = 1
 let g:syntastic_always_populate_loc_list = 1
-:inoremap <A-l> <Right>
-:inoremap <A-h> <Left>
+:inoremap <A-l> <Right>a
+:inoremap <A-h> <Left>a
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set sw=4
 set ts=4
@@ -68,7 +68,7 @@ set go=             " 不要图形按钮
 "color zellner "设置背景主题  
 "color ron     " 设置背景主题  
 "color torte     " 设置背景主题  
-"color lilydjwg_dark
+color lilydjwg_dark
 "set guifont=Courier_New:h10:cANSI   " 设置字体  
 "autocmd InsertLeave * se nocul  " 用浅色高亮当前行  
 autocmd InsertEnter * se cul    " 用浅色高亮当前行  
@@ -177,8 +177,8 @@ func SetTitle()
         call setline(5, "    return 0;")
         call setline(6, "}")
         call setline(7, "")
-        :normal 2j 
-        :normal o 
+        :normal 3j 
+        :normal O 
     endif
     if &filetype == 'c'
         call setline(1, "#include <stdio.h>")
