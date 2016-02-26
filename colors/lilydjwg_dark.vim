@@ -32,7 +32,7 @@ hi Ignore gui=None ctermfg=235
 hi IncSearch gui=bold,reverse guifg=#33ff1c guibg=#3454ff cterm=bold,reverse ctermfg=40 ctermbg=69
 hi LineNr guifg=#FF77DD ctermfg=212
 ""hi MatchParen guifg=red guibg=red ctermfg=45 ctermbg=255
-hi MatchParen cterm=none ctermbg=white ctermfg=red
+hi MatchParen cterm=none ctermbg=208 ctermfg=233 cterm=bold
 hi ModeMsg gui=bold guifg=#AAAA3C guibg=#222211 cterm=bold ctermfg=136
 hi MoreMsg guifg=#FFFF00 ctermfg=226
 hi NonText guifg=#8400ff guibg=#1C1C1C ctermfg=129 ctermbg=234
@@ -51,7 +51,7 @@ hi SpellBad gui=undercurl cterm=undercurl
 hi SpellCap gui=undercurl cterm=undercurl
 hi SpellLocal gui=undercurl cterm=undercurl
 hi SpellRare gui=undercurl cterm=undercurl
-hi Statement gui=bold guifg=#d86868 guibg=#2d2222 cterm=bold ctermfg=167
+hi Statement gui=bold guifg=#d86868 guibg=#2d2222 cterm=bold ctermfg=161 
 hi StatusLine gui=reverse guifg=#00c4ff guibg=#000000 cterm=reverse ctermfg=39 ctermbg=16
 hi StatusLineNC guifg=#A4A4FF guibg=#444400 ctermfg=141 ctermbg=58
 hi TabLine guifg=#0066FF guibg=#001133 ctermfg=32 ctermbg=17
