@@ -512,21 +512,21 @@ let g:ctrlp_extensions = ['funky']
 let NERDTreeIgnore=['\.pyc']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Load a random theme every time you load VIM
-function! PickRandomTheme()
-lua <<EOF
-  math.randomseed(os.time())
-  local themes = {'256-jungle','colorful256','tomatosoup','blacklight','lilydjwg_dark','turbo','candycode'}
-  local theme = string.format('color %s', themes[math.random(1,#themes)])
-vim.command(theme)
-EOF
-endfunction
-set background=dark t_Co=256
-syntax on
-if has('lua')
-  call PickRandomTheme()
-else
-  color railscasts
-end
+""function! PickRandomTheme()
+""lua <<EOF
+""  math.randomseed(os.time())
+""  local themes = {'256-jungle','colorful256','tomatosoup','blacklight','lilydjwg_dark','turbo','candycode'}
+""  local theme = string.format('color %s', themes[math.random(1,#themes)])
+""vim.command(theme)
+""EOF
+""endfunction
+""set background=dark t_Co=256
+""syntax on
+""if has('lua')
+""  call PickRandomTheme()
+""else
+""  color railscasts
+""end
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Put this at the top of your .vimrc to use Vundle. Remove plugins you don't need, they are for illustration purposes.
 set nocompatible              " be iMproved, required
