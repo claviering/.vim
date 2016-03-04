@@ -54,3 +54,4 @@ CTRL-] 将光标置于调用 "write_line" 的地方然 后按 CTRL-]，你就跳
 jptag write_char 打开一个预览窗口来显示函数 "write_char"： >
 <A-l> == right
 <C-#> 查找光标上的单词
+:noh To turn off highlighting until the next search
