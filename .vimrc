@@ -180,15 +180,15 @@ func SetTitle()
         :normal 3j 
         :normal O 
     endif
-    if &filetype == 'c'
+    if expand("%:e") == 'c'
         call setline(1, "#include <stdio.h>")
-        call append(line("."), "#include <iostream>")
-        call append(line(".")+1, "using namespace std;")
-        call append(line(".")+2, "int main(){")
-        call append(line(".")+3, "")
-        call append(line(".")+4, "    return 0;")
-        call append(line(".")+5, "}")
-        call append(line(".")+6, "")
+        call setline(2, "int main()")
+        call setline(3, "{")
+        call setline(4, "    return 0;")
+        call setline(5, "}")
+        call setline(6, "")
+        :normal 3j 
+        :normal O 
     endif
     if expand("%:e") == 'h'
         call append(line(".")+6, "#ifndef _".toupper(expand("%:r"))."_H")
