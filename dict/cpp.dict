@@ -89,6 +89,7 @@ dynamic_cast
 elems_in_bucket
 empty
 end
+endl
 eof
 equal_range
 erase
