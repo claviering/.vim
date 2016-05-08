@@ -182,6 +182,7 @@ pop_front
 precision
 previous
 private
+priority_queue
 protected
 public
 push
