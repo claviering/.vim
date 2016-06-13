@@ -111,3 +111,4 @@ fi
 alias q='exit'
 alias sdh='sudo shutdown -h now'
 alias sdr='sudo shutdown -r now'
+alias pdfview='evince'
