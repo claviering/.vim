@@ -545,3 +545,5 @@ filetype plugin indent on    " required
 " 关闭各种按键叮叮声音和闪屏
 set vb t_vb=
 au GuiEnter * set t_vb=
+" 让配置变更立即生效
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
