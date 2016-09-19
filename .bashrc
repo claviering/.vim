@@ -113,5 +113,6 @@ alias sdh='sudo shutdown -h now'
 alias sdr='sudo shutdown -r now'
 alias pdfview='evince'
 alias cmatrix='cmatrix -B -u 7'
+alias cl='clear'
 #use vim mode in Bash
 set -o vi 
