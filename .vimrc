@@ -1,9 +1,4 @@
 " Mysetting"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-:nmap <c-s> :w<CR>
-:vmap <c-s> <Esc><c-s>gv
-:imap <c-s> <Esc><c-s>map <c-s> :w<CR>
-:vmap <c-s> <Esc><c-s>gv
-:imap <c-s> <Esc><c-s>
 :set autowrite "auto write to disk"
 :set t_Co=256
 set conceallevel=2
@@ -13,8 +8,6 @@ let g:syntastic_python_python_exec = '/path/to/python3'
 let g:syntastic_html_tidy_exec = 'tidy5'
 let g:syntastic_enable_perl_checker = 1
 let g:syntastic_always_populate_loc_list = 1
-:inoremap <A-l> <Right>a
-:inoremap <A-h> <Left>a
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set sw=4
 set ts=4
@@ -55,20 +48,6 @@ set cul "高亮光标所在行
 set cuc
 set shortmess=atI   " 启动的时候不显示那个援助乌干达儿童的提示  
 set go=             " 不要图形按钮  
-"color desert     " 设置背景主题  
-"color blue "设置背景主题  
-"color default "设置背景主题  
-"color evening " 设置背景主题  
-"color koehler " 设置背景主题  
-"color morning " 设置背景主题  
-"color murphy "设置背景主题  
-"color pablo "设置背景主题  
-"color peachpuff "设置背景主题  
-"color shine "设置背景主题  
-"color slate "设置背景主题  
-"color zellner "设置背景主题  
-"color ron     " 设置背景主题  
-"color torte     " 设置背景主题  
 color lilydjwg_dark
 "set guifont=Courier_New:h10:cANSI   " 设置字体  
 "autocmd InsertLeave * se nocul  " 用浅色高亮当前行  
@@ -218,7 +197,6 @@ map <F12> gg=G
 map <C-w> <C-w>w
 imap <C-k> <C-y>,
 imap <C-t> <C-q><TAB>
-imap <C-j> <ESC>
 " 选中状态下 Ctrl+c 复制
 "map <C-v> "*pa
 imap <C-v> <Esc>"*pa
@@ -451,48 +429,6 @@ autocmd FileType python set omnifunc=pythoncomplete#Complete
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" let Vundle manage Vundle
-" required! 
-Bundle 'gmarik/vundle'
-
-" My Bundles here:
-"
-" original repos on github
-Bundle 'tpope/vim-fugitive'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'Yggdroot/indentLine'
-let g:indentLine_char = '┊'
-"ndle 'tpope/vim-rails.git'
-" vim-scripts repos
-Bundle 'L9'
-Bundle 'FuzzyFinder'
-" non github repos
-Bundle 'https://github.com/wincent/command-t.git'
-Bundle 'Auto-Pairs'
-Bundle 'python-imports.vim'
-Bundle 'CaptureClipboard'
-Bundle 'ctrlp-modified.vim'
-Bundle 'last_edit_marker.vim'
-Bundle 'synmark.vim'
-"Bundle 'Python-mode-klen'
-Bundle 'SQLComplete.vim'
-Bundle 'Javascript-OmniCompletion-with-YUI-and-j'
-"Bundle 'JavaScript-Indent'
-"Bundle 'Better-Javascript-Indentation'
-Bundle 'jslint.vim'
-Bundle "pangloss/vim-javascript"
-Bundle 'Vim-Script-Updater'
-Bundle 'ctrlp.vim'
-Bundle 'tacahiroy/ctrlp-funky'
-Bundle 'jsbeautify'
-Bundle 'The-NERD-Commenter'
-"django
-Bundle 'django_templates.vim'
-Bundle 'Django-Projects'
-
-"Bundle 'FredKSchott/CoVim'
-"Bundle 'djangojump'
-" ...
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
@@ -532,6 +468,7 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-scripts/cpp_cppcheck.vim'
 Plugin 'Shougo/neocomplete.vim'
@@ -542,8 +479,6 @@ filetype plugin indent on    " required
 " 关闭各种按键叮叮声音和闪屏
 set vb t_vb=
 au GuiEnter * set t_vb=
-" 让配置变更立即生效
-autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
 " neocomplete.vim config
 let g:neocomplete#enable_at_startup = 1
