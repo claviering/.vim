@@ -196,7 +196,7 @@ map! <C-Z> <Esc>zzi
 map! <C-O> <C-Y>,
 map <C-A> ggVG$"+y
 map <F12> gg=G
-map <C-w> <C-w>w
+"map <C-w> <C-w>w
 imap <C-k> <C-y>,
 imap <C-t> <C-q><TAB>
 " 选中状态下 Ctrl+c 复制
