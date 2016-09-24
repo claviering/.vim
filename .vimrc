@@ -1,6 +1,6 @@
 " Mysetting"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-:set autowrite "auto write to disk"
-:set t_Co=256
+set autowrite "auto write to disk"
+set t_Co=256
 set conceallevel=2
 set concealcursor=vin
 execute pathogen#infect()
@@ -8,6 +8,8 @@ let g:syntastic_python_python_exec = '/path/to/python3'
 let g:syntastic_html_tidy_exec = 'tidy5'
 let g:syntastic_enable_perl_checker = 1
 let g:syntastic_always_populate_loc_list = 1
+" All fold open when opening a file"
+:autocmd BufRead,BufNewFile *.c,*.cpp,*.java,*.html,*.cs,*.js normal zR
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set sw=4
 set ts=4
@@ -463,6 +465,7 @@ let NERDTreeIgnore=['\.pyc']
 ""  color railscasts
 ""end
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" start Vundle config"
 "Put this at the top of your .vimrc to use Vundle. Remove plugins you don't need, they are for illustration purposes.
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -470,12 +473,13 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'vim-scripts/cpp_cppcheck.vim'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'scrooloose/syntastic'
+Plugin 'octol/vim-cpp-enhanced-highlight'
 call vundle#end()            " required
 filetype plugin indent on    " required
+" end Vundle config"
 " 关闭各种按键叮叮声音和闪屏
 set vb t_vb=
 au GuiEnter * set t_vb=
@@ -555,6 +559,7 @@ endif
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+" end neocomplete.vim config
 
 " scrooloose/syntastic config
 execute pathogen#infect()
@@ -566,3 +571,10 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+" end scrooloose/syntastic config
+
+" start YouCompleteMe config
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+" 允许 vim 加载 .ycm_extra_conf.py 文件，不再提示
+let g:ycm_confirm_extra_conf=0
+" end YouCompleteMe config
