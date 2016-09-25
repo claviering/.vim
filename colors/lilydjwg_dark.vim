@@ -87,7 +87,7 @@ hi link Repeat Statement
 hi link SpecialChar Special
 hi link SpecialComment Special
 hi link StorageClass Type
-hi link String Constant
+hi link String Statement
 hi link Structure Type
 hi link Tag Special
 hi link Typedef Type
