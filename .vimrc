@@ -10,6 +10,9 @@ let g:syntastic_enable_perl_checker = 1
 let g:syntastic_always_populate_loc_list = 1
 " All fold open when opening a file"
 :autocmd BufRead,BufNewFile *.c,*.cpp,*.java,*.html,*.cs,*.js normal zR
+" java fold syntax
+autocmd FileType java set foldmethod=marker
+autocmd FileType java set foldmarker={,}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set sw=4
 set ts=4
@@ -342,7 +345,8 @@ set backspace=2
 " 允许backspace和光标键跨越行边界
 set whichwrap+=<,>,h,l
 " 可以在buffer的任何地方使用鼠标（类似office中在工作区双击鼠标定位）
-"set mouse=a
+set mouse-=a
+"禁用鼠标
 set selection=exclusive
 "set selectmode=mouse,key
 " 通过使用: commands命令，告诉我们文件的哪一行被改变过
@@ -471,7 +475,7 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'mattn/emmet-vim'
