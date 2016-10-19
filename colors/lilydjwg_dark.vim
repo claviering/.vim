@@ -30,7 +30,7 @@ hi Folded guifg=#9933FF guibg=#333333 ctermfg=128 ctermbg=236
 hi Identifier guifg=#986CFF guibg=#2d222d ctermfg=135
 hi Ignore gui=None ctermfg=235
 hi IncSearch gui=bold,reverse guifg=#33ff1c guibg=#3454ff cterm=bold,reverse ctermfg=40 ctermbg=69
-hi LineNr guifg=#FF77DD ctermfg=212
+hi LineNr guifg=#FF77DD ctermbg=235 ctermfg=202
 ""hi MatchParen guifg=red guibg=red ctermfg=45 ctermbg=255
 hi MatchParen cterm=none ctermbg=208 ctermfg=233 cterm=bold
 hi ModeMsg gui=bold guifg=#AAAA3C guibg=#222211 cterm=bold ctermfg=136
