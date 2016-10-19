@@ -1,38 +1,38 @@
 " Mysetting"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let mapleader = ","
-set autowrite "auto write to disk"
-set t_Co=256
-set conceallevel=2
-set concealcursor=vin
-execute pathogen#infect()
-let g:syntastic_python_python_exec = '/path/to/python3'
-let g:syntastic_html_tidy_exec = 'tidy5'
-let g:syntastic_enable_perl_checker = 1
-let g:syntastic_always_populate_loc_list = 1
-" All fold open when opening a file"
-:autocmd BufRead,BufNewFile *.c,*.cpp,*.java,*.html,*.cs,*.js normal zR
-" java fold syntax
-autocmd FileType java set foldmethod=marker
-autocmd FileType java set foldmarker={,}
+    let mapleader = ","
+    set autowrite "auto write to disk"
+    set t_Co=256
+    set conceallevel=2
+    set concealcursor=vin
+    execute pathogen#infect()
+    let g:syntastic_python_python_exec = '/path/to/python3'
+    let g:syntastic_html_tidy_exec = 'tidy5'
+    let g:syntastic_enable_perl_checker = 1
+    let g:syntastic_always_populate_loc_list = 1
+    " All fold open when opening a file"
+    :autocmd BufRead,BufNewFile *.c,*.cpp,*.java,*.html,*.cs,*.js normal zR
+    " java fold syntax
+    autocmd FileType java set foldmethod=marker
+    autocmd FileType java set foldmarker={,}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " start Vundle config"
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-"Put this at the top of your .vimrc to use Vundle. Remove plugins you don't need, they are for illustration purposes.
-set nocompatible              " be iMproved, required
-filetype off                  " required
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'octol/vim-cpp-enhanced-highlight'
-call vundle#end()            " required
-filetype plugin indent on    " required
+    set rtp+=~/.vim/bundle/vundle/
+    call vundle#rc()
+    "Put this at the top of your .vimrc to use Vundle. Remove plugins you don't need, they are for illustration purposes.
+    set nocompatible              " be iMproved, required
+    filetype off                  " required
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
+    " Plugin 'Valloric/YouCompleteMe'
+    Plugin 'scrooloose/nerdcommenter'
+    Plugin 'VundleVim/Vundle.vim'
+    Plugin 'Shougo/neocomplete.vim'
+    Plugin 'mattn/emmet-vim'
+    Plugin 'scrooloose/syntastic'
+    Plugin 'octol/vim-cpp-enhanced-highlight'
+    call vundle#end()            " required
+    filetype plugin indent on    " required
 " end Vundle config"
 
 set sw=4
@@ -212,36 +212,36 @@ endfunc
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "键盘命令
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-:nmap <silent> <F9> <ESC>:Tlist<RETURN>
-" shift tab pages
-map <S-Left> :tabp<CR>
-map <S-Right> :tabn<CR>
-map! <C-Z> <Esc>zzi
-map! <C-O> <C-Y>,
-map <C-A> ggVG$"+y
-map <F12> gg=G
-"map <C-w> <C-w>w
-imap <C-k> <C-y>,
-imap <C-t> <C-q><TAB>
-" 选中状态下 Ctrl+c 复制
-"map <C-v> "*pa
-imap <C-v> <Esc>"*pa
-imap <C-a> <Esc>^
-imap <C-e> <Esc>$
-vmap <C-c> "+y
-"set mouse=v
-"set clipboard=unnamed
-"去空行  
-nnoremap <F2> :g/^\s*$/d<CR> 
-"比较文件  
-nnoremap <C-F2> :vert diffsplit 
-"nnoremap <Leader>fu :CtrlPFunky<Cr>
-"nnoremap <C-n> :CtrlPFunky<Cr>
-"列出当前目录文件  
-map <F3> :NERDTreeToggle<CR>
-imap <F3> <ESC> :NERDTreeToggle<CR>
-"打开树状文件目录  
-map <C-F3> \be  
+    :nmap <silent> <F9> <ESC>:Tlist<RETURN>
+    " shift tab pages
+    map <S-Left> :tabp<CR>
+    map <S-Right> :tabn<CR>
+    map! <C-Z> <Esc>zzi
+    map! <C-O> <C-Y>,
+    map <C-A> ggVG$"+y
+    map <F12> gg=G
+    "map <C-w> <C-w>w
+    imap <C-k> <C-y>,
+    imap <C-t> <C-q><TAB>
+    " 选中状态下 Ctrl+c 复制
+    "map <C-v> "*pa
+    imap <C-v> <Esc>"*pa
+    imap <C-a> <Esc>^
+    imap <C-e> <Esc>$
+    vmap <C-c> "+y
+    "set mouse=v
+    "set clipboard=unnamed
+    "去空行  
+    nnoremap <F2> :g/^\s*$/d<CR> 
+    "比较文件  
+    nnoremap <C-F2> :vert diffsplit 
+    "nnoremap <Leader>fu :CtrlPFunky<Cr>
+    "nnoremap <C-n> :CtrlPFunky<Cr>
+    "列出当前目录文件  
+    map <F3> :NERDTreeToggle<CR>
+    imap <F3> <ESC> :NERDTreeToggle<CR>
+    "打开树状文件目录  
+    map <C-F3> \be  
 :autocmd BufRead,BufNewFile *.dot map <F5> :w<CR>:!dot -Tjpg -o %<.jpg % && eog %<.jpg  <CR><CR> && exec "redr!"
 "C，C++ 按F5编译运行
 map <F5> :call CompileRunGcc()<CR>
@@ -436,13 +436,13 @@ let g:miniBufExplModSelTarget = 1
 nmap tl :Tlist<cr>
 
 "python补全
-let g:pydiction_location = '~/.vim/after/complete-dict'
-let g:pydiction_menu_height = 20
-let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
+    let g:pydiction_location = '~/.vim/after/complete-dict'
+    let g:pydiction_menu_height = 20
+    let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
+    let g:miniBufExplMapWindowNavVim = 1
+    let g:miniBufExplMapWindowNavArrows = 1
+    let g:miniBufExplMapCTabSwitchBufs = 1
+    let g:miniBufExplModSelTarget = 1
 
 
 set iskeyword+=.
@@ -462,147 +462,146 @@ filetype plugin indent on     " required!
 "
 "ctrlp设置
 "
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.png,*.jpg,*.gif     " MacOSX/Linux
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.pyc,*.png,*.jpg,*.gif  " Windows
-
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_custom_ignore = '\v\.(exe|so|dll)$'
-let g:ctrlp_extensions = ['funky']
-
-let NERDTreeIgnore=['\.pyc']
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Load a random theme every time you load VIM
-""function! PickRandomTheme()
-""lua <<EOF
-""  math.randomseed(os.time())
-""  local themes = {'256-jungle','colorful256','tomatosoup','blacklight','lilydjwg_dark','turbo','candycode'}
-""  local theme = string.format('color %s', themes[math.random(1,#themes)])
-""vim.command(theme)
-""EOF
-""endfunction
-""set background=dark t_Co=256
-""syntax on
-""if has('lua')
-""  call PickRandomTheme()
-""else
-""  color railscasts
-""end
+    set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.png,*.jpg,*.gif     " MacOSX/Linux
+    set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.pyc,*.png,*.jpg,*.gif  " Windows
+    
+    let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+    let g:ctrlp_custom_ignore = '\v\.(exe|so|dll)$'
+    let g:ctrlp_extensions = ['funky']
+    
+    let NERDTreeIgnore=['\.pyc']
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " Load a random theme every time you load VIM
+    ""function! PickRandomTheme()
+    ""lua <<EOF
+    ""  math.randomseed(os.time())
+    ""  local themes = {'256-jungle','colorful256','tomatosoup','blacklight','lilydjwg_dark','turbo','candycode'}
+    ""  local theme = string.format('color %s', themes[math.random(1,#themes)])
+    ""vim.command(theme)
+    ""EOF
+    ""endfunction
+    ""set background=dark t_Co=256
+    ""syntax on
+    ""if has('lua')
+    ""  call PickRandomTheme()
+    ""else
+    ""  color railscasts
+    ""end
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 关闭各种按键叮叮声音和闪屏
 set vb t_vb=
 au GuiEnter * set t_vb=
 
 " start neocomplete.vim config
-let g:neocomplete#enable_at_startup = 1
-" Note: This option must be set in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '~/.vim/dict/*',
-    \ 'dict' : '~/.vim/dict/*',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
-
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? "\<C-y>" : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
-
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
-
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplete#enable_auto_select = 1
-"let g:neocomplete#disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType java setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+    let g:neocomplete#enable_at_startup = 1
+    " Note: This option must be set in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+    " Disable AutoComplPop.
+    let g:acp_enableAtStartup = 0
+    " Use neocomplete.
+    let g:neocomplete#enable_at_startup = 1
+    " Use smartcase.
+    let g:neocomplete#enable_smart_case = 1
+    " Set minimum syntax keyword length.
+    let g:neocomplete#sources#syntax#min_keyword_length = 3
+    let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+    
+    " Define dictionary.
+    let g:neocomplete#sources#dictionary#dictionaries = {
+        \ 'default' : '~/.vim/dict/*',
+        \ 'dict' : '~/.vim/dict/*',
+        \ 'vimshell' : $HOME.'/.vimshell_hist',
+        \ 'scheme' : $HOME.'/.gosh_completions'
+            \ }
+    
+    " Define keyword.
+    if !exists('g:neocomplete#keyword_patterns')
+        let g:neocomplete#keyword_patterns = {}
+    endif
+    let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+    
+    " Plugin key-mappings.
+    inoremap <expr><C-g>     neocomplete#undo_completion()
+    inoremap <expr><C-l>     neocomplete#complete_common_string()
+    
+    " Recommended key-mappings.
+    " <CR>: close popup and save indent.
+    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+    function! s:my_cr_function()
+      return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+      " For no inserting <CR> key.
+      "return pumvisible() ? "\<C-y>" : "\<CR>"
+    endfunction
+    " <TAB>: completion.
+    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+    " <C-h>, <BS>: close popup and delete backword char.
+    inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+    inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+    " Close popup by <Space>.
+    "inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+    
+    " AutoComplPop like behavior.
+    "let g:neocomplete#enable_auto_select = 1
+    
+    " Shell like behavior(not recommended).
+    "set completeopt+=longest
+    "let g:neocomplete#enable_auto_select = 1
+    "let g:neocomplete#disable_auto_complete = 1
+    "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+    
+    " Enable omni completion.
+    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+    autocmd FileType java setlocal omnifunc=xmlcomplete#CompleteTags
+    
+    " Enable heavy omni completion.
+    if !exists('g:neocomplete#sources#omni#input_patterns')
+      let g:neocomplete#sources#omni#input_patterns = {}
+    endif
+    "let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+    "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+    "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+    
+    " For perlomni.vim setting.
+    " https://github.com/c9s/perlomni.vim
+    let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 " end neocomplete.vim config
 
 " scrooloose/syntastic config
-execute pathogen#infect()
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+    execute pathogen#infect()
+    set statusline+=%#warningmsg#
+    set statusline+=%{SyntasticStatuslineFlag()}
+    set statusline+=%*
+    
+    let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_auto_loc_list = 1
+    let g:syntastic_check_on_open = 1
+    let g:syntastic_check_on_wq = 0
 " end scrooloose/syntastic config
 
 " start YouCompleteMe config
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-" 允许 vim 加载 .ycm_extra_conf.py 文件，不再提示
-let g:ycm_confirm_extra_conf=0
+    let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+    " 允许 vim 加载 .ycm_extra_conf.py 文件，不再提示
+    let g:ycm_confirm_extra_conf=0
 " end YouCompleteMe config
 
 "start vim-cpp-enhanced-highlight config
-
-let g:cpp_class_scope_highlight = 1
-
-let g:cpp_experimental_template_highlight = 1
-
-let g:cpp_concepts_highlight = 1
+    
+    let g:cpp_class_scope_highlight = 1
+    
+    let g:cpp_experimental_template_highlight = 1
+    
+    let g:cpp_concepts_highlight = 1
 "end vim-cpp-enhanced-highlight config
 "
 " start scrooloose/nerdcommenter config
-" Enable trimming of trailing whitespace when uncommenting
-let g:NERDTrimTrailingWhitespace = 1
-" Usage
-" <Leader>cc comment
-" <Leader>cs comment pretty
-" <Leader>cu uncomment
-" <Leader>cA comment Adds comment delimiters to the end of line and goes into insert mode between them.
-
+    " Enable trimming of trailing whitespace when uncommenting
+    let g:NERDTrimTrailingWhitespace = 1
+    " Usage
+    " <Leader>cc comment
+    " <Leader>cs comment pretty
+    " <Leader>cu uncomment
+    " <Leader>cA comment Adds comment delimiters to the end of line and goes into insert mode between them.
 " end scrooloose/nerdcommenter config
