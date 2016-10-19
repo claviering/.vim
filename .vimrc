@@ -146,12 +146,12 @@ func SetTitle()
         "    elseif &filetype == 'mkd'
         "        call setline(1,"<head><meta charset=\"UTF-8\"></head>")
     else 
-        call setline(1, "/*************************************************************************")
+        call setline(1, "/********************************************************************")
         call append(line("."), "	> File Name: ".expand("%")) 
         call append(line(".")+1, "	> Author: ") 
         call append(line(".")+2, "	> Mail: ") 
         call append(line(".")+3, "	> Created Time: ".strftime("%c")) 
-        call append(line(".")+4, " ************************************************************************/") 
+        call append(line(".")+4, " *******************************************************************/") 
         call append(line(".")+5, "")
     endif
     if expand("%:e") == 'cpp'
@@ -582,3 +582,12 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/
 " 允许 vim 加载 .ycm_extra_conf.py 文件，不再提示
 let g:ycm_confirm_extra_conf=0
 " end YouCompleteMe config
+"
+"start vim-cpp-enhanced-highlight config
+
+let g:cpp_class_scope_highlight = 1
+
+let g:cpp_experimental_template_highlight = 1
+
+let g:cpp_concepts_highlight = 1
+"end vim-cpp-enhanced-highlight config
