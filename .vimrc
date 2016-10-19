@@ -1,4 +1,5 @@
 " Mysetting"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let mapleader = ","
 set autowrite "auto write to disk"
 set t_Co=256
 set conceallevel=2
@@ -14,6 +15,26 @@ let g:syntastic_always_populate_loc_list = 1
 autocmd FileType java set foldmethod=marker
 autocmd FileType java set foldmarker={,}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" start Vundle config"
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+"Put this at the top of your .vimrc to use Vundle. Remove plugins you don't need, they are for illustration purposes.
+set nocompatible              " be iMproved, required
+filetype off                  " required
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'octol/vim-cpp-enhanced-highlight'
+call vundle#end()            " required
+filetype plugin indent on    " required
+" end Vundle config"
+
 set sw=4
 set ts=4
 set et
@@ -432,8 +453,6 @@ set fileencodings=utf8,ucs-bom,gbk,cp936,gb2312,gb18030
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
 
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
@@ -469,26 +488,11 @@ let NERDTreeIgnore=['\.pyc']
 ""  color railscasts
 ""end
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" start Vundle config"
-"Put this at the top of your .vimrc to use Vundle. Remove plugins you don't need, they are for illustration purposes.
-set nocompatible              " be iMproved, required
-filetype off                  " required
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" Plugin 'Valloric/YouCompleteMe'
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'octol/vim-cpp-enhanced-highlight'
-call vundle#end()            " required
-filetype plugin indent on    " required
-" end Vundle config"
 " 关闭各种按键叮叮声音和闪屏
 set vb t_vb=
 au GuiEnter * set t_vb=
 
-" neocomplete.vim config
+" start neocomplete.vim config
 let g:neocomplete#enable_at_startup = 1
 " Note: This option must be set in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
@@ -582,7 +586,7 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/
 " 允许 vim 加载 .ycm_extra_conf.py 文件，不再提示
 let g:ycm_confirm_extra_conf=0
 " end YouCompleteMe config
-"
+
 "start vim-cpp-enhanced-highlight config
 
 let g:cpp_class_scope_highlight = 1
@@ -591,3 +595,14 @@ let g:cpp_experimental_template_highlight = 1
 
 let g:cpp_concepts_highlight = 1
 "end vim-cpp-enhanced-highlight config
+"
+" start scrooloose/nerdcommenter config
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+" Usage
+" <Leader>cc comment
+" <Leader>cs comment pretty
+" <Leader>cu uncomment
+" <Leader>cA comment Adds comment delimiters to the end of line and goes into insert mode between them.
+
+" end scrooloose/nerdcommenter config
