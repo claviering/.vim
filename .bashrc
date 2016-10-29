@@ -118,5 +118,3 @@ alias jc='javac'
 alias c1='cd ..'
 alias c2='cd ../..'
 alias c3='cd ../../..'
-#use vim mode in Bash
-set -o vi 
