@@ -11,6 +11,7 @@
     let g:syntastic_always_populate_loc_list = 1
     " All fold open when opening a file"
     :autocmd BufRead,BufNewFile *.h,*.c,*.cpp,*.java,*.html,*.cs,*.js normal zR
+    map <Leader>r :SyntasticReset<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " start Vundle config"
@@ -430,6 +431,8 @@ au GuiEnter * set t_vb=
 "
 " start Plugin 'aperezdc/vim-template'
     " 新建文件使用模板插件
+let g:license = "WTFPL"
+let g:username = "claviering"
 " end Plugin 'aperezdc/vim-template'
 "
 " start Plugin 'pseewald/AnyFold'
