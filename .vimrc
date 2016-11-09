@@ -10,10 +10,7 @@
     let g:syntastic_enable_perl_checker = 1
     let g:syntastic_always_populate_loc_list = 1
     " All fold open when opening a file"
-    :autocmd BufRead,BufNewFile *.c,*.cpp,*.java,*.html,*.cs,*.js normal zR
-    " java fold syntax
-    autocmd FileType java set foldmethod=marker
-    autocmd FileType java set foldmarker={,}
+    :autocmd BufRead,BufNewFile *.h,*.c,*.cpp,*.java,*.html,*.cs,*.js normal zR
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " start Vundle config"
@@ -25,7 +22,11 @@
     set rtp+=~/.vim/bundle/Vundle.vim
     call vundle#begin()
     " Plugin 'Valloric/YouCompleteMe'
+    Plugin 'pseewald/AnyFold'
+    Plugin 'aperezdc/vim-template'
+    Plugin 'mzlogin/vim-markdown-toc'
     Plugin 'scrooloose/nerdcommenter'
+    Plugin 'danro/rename.vim'
     Plugin 'VundleVim/Vundle.vim'
     Plugin 'Shougo/neocomplete.vim'
     Plugin 'mattn/emmet-vim'
@@ -75,17 +76,12 @@ set cuc
 set shortmess=atI   " 启动的时候不显示那个援助乌干达儿童的提示  
 set go=             " 不要图形按钮  
 color lilydjwg_dark
-"set guifont=Courier_New:h10:cANSI   " 设置字体  
-"autocmd InsertLeave * se nocul  " 用浅色高亮当前行  
 autocmd InsertEnter * se cul    " 用浅色高亮当前行  
 set ruler           " 显示标尺  
 set showcmd         " 输入的命令显示出来，看的清楚些  
-"set whichwrap+=<,>,h,l   " 允许backspace和光标键跨越行边界(不建议)  
 set scrolloff=3     " 光标移动到buffer的顶部和底部时保持3行距离  
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}   "状态行显示的内容  
 set laststatus=2    " 启动显示状态行(1),总是显示状态行(2)  
-"set foldenable      " 允许折叠  
-""set foldmethod=manual   " 手动折叠  
 set nocompatible  "去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限  
 " 显示中文帮助
 if version >= 603
@@ -132,87 +128,10 @@ set iskeyword+=_,$,@,%,#,-
 au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn}   set filetype=mkd
 au BufRead,BufNewFile *.{go}   set filetype=go
 au BufRead,BufNewFile *.{js}   set filetype=javascript
-"rkdown to HTML  
-nmap md :!~/.vim/markdown.pl % > %.html <CR><CR>
-nmap fi :!firefox %.html & <CR><CR>
-nmap \ \cc
-vmap \ \cc
-
-"将tab替换为空格
-"nmap tt :%s/\t/    /g<CR>
-
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""新文件标题
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"新建.c,.h,.sh,.java文件，自动插入文件头 
-autocmd BufNewFile *.cpp,*.[ch],*.sh,*.rb,*.java,*.py exec ":call SetTitle()" 
-""定义函数SetTitle，自动插入文件头 
-func SetTitle() 
-    "如果文件类型为.sh文件 
-    if &filetype == 'sh' 
-        call setline(1,"\#!/bin/bash") 
-        call append(line("."), "") 
-    elseif &filetype == 'python'
-        call setline(1,"#!/usr/bin/env python")
-        call append(line("."),"# coding=utf-8")
-        call append(line(".")+1, "") 
-
-    elseif &filetype == 'ruby'
-        call setline(1,"#!/usr/bin/env ruby")
-        call append(line("."),"# encoding: utf-8")
-        call append(line(".")+1, "")
-
-        "    elseif &filetype == 'mkd'
-        "        call setline(1,"<head><meta charset=\"UTF-8\"></head>")
-    else 
-        call setline(1, "/********************************************************************")
-        call append(line("."), "	> File Name: ".expand("%")) 
-        call append(line(".")+1, "	> Author: ") 
-        call append(line(".")+2, "	> Mail: ") 
-        call append(line(".")+3, "	> Created Time: ".strftime("%c")) 
-        call append(line(".")+4, " *******************************************************************/") 
-        call append(line(".")+5, "")
-    endif
-    if expand("%:e") == 'cpp'
-        call setline(1, "#include <iostream>")
-        call setline(2, "using namespace std;")
-        call setline(3, "int main()")
-        call setline(4, "{")
-        call setline(5, "    return 0;")
-        call setline(6, "}")
-        call setline(7, "")
-        :normal 3j 
-        :normal O 
-    endif
-    if expand("%:e") == 'c'
-        call setline(1, "#include <stdio.h>")
-        call setline(2, "int main()")
-        call setline(3, "{")
-        call setline(4, "    return 0;")
-        call setline(5, "}")
-        call setline(6, "")
-        :normal 3j 
-        :normal O 
-    endif
-    if expand("%:e") == 'h'
-        call append(line(".")+6, "#ifndef _".toupper(expand("%:r"))."_H")
-        call append(line(".")+7, "#define _".toupper(expand("%:r"))."_H")
-        call append(line(".")+8, "#endif")
-    endif
-    if &filetype == 'java'
-        call append(line(".")+6,"public class ".expand("%:r"))
-        call append(line(".")+7,"")
-    endif
-    "新建文件后，自动定位到文件末尾
-endfunc 
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"键盘命令
+" map key 键盘命令
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-    :nmap <silent> <F9> <ESC>:Tlist<RETURN>
     " shift tab pages
     map <S-Left> :tabp<CR>
     map <S-Right> :tabn<CR>
@@ -220,7 +139,6 @@ endfunc
     map! <C-O> <C-Y>,
     map <C-A> ggVG$"+y
     map <F12> gg=G
-    "map <C-w> <C-w>w
     imap <C-k> <C-y>,
     imap <C-t> <C-q><TAB>
     " 选中状态下 Ctrl+c 复制
@@ -229,17 +147,12 @@ endfunc
     imap <C-a> <Esc>^
     imap <C-e> <Esc>$
     vmap <C-c> "+y
-    "set mouse=v
-    "set clipboard=unnamed
     "去空行  
     nnoremap <F2> :g/^\s*$/d<CR> 
     "比较文件  
     nnoremap <C-F2> :vert diffsplit 
     "nnoremap <Leader>fu :CtrlPFunky<Cr>
     "nnoremap <C-n> :CtrlPFunky<Cr>
-    "列出当前目录文件  
-    map <F3> :NERDTreeToggle<CR>
-    imap <F3> <ESC> :NERDTreeToggle<CR>
     "打开树状文件目录  
     map <C-F3> \be  
 :autocmd BufRead,BufNewFile *.dot map <F5> :w<CR>:!dot -Tjpg -o %<.jpg % && eog %<.jpg  <CR><CR> && exec "redr!"
@@ -248,11 +161,11 @@ map <F5> :call CompileRunGcc()<CR>
 func! CompileRunGcc()
     exec "w"
     if &filetype == 'c'
-        exec "!g++ % -o %<"
+        exec "!g++ % "
         exec "!time ./%<"
     elseif &filetype == 'cpp'
-        exec "!g++ % -o %<"
-        exec "!time ./%<"
+        exec "!g++ % "
+        exec "!time "
     elseif &filetype == 'java' 
         exec "!javac %" 
         exec "!time java %<"
@@ -278,37 +191,6 @@ func! Rungdb()
     exec "!gdb ./%<"
 endfunc
 
-
-"代码格式优化化
-
-map <F6> :call FormartSrc()<CR><CR>
-
-"定义FormartSrc()
-func FormartSrc()
-    exec "w"
-    if &filetype == 'c'
-        exec "!astyle --style=ansi -a --suffix=none %"
-    elseif &filetype == 'cpp' || &filetype == 'hpp'
-        exec "r !astyle --style=ansi --one-line=keep-statements -a --suffix=none %> /dev/null 2>&1"
-    elseif &filetype == 'perl'
-        exec "!astyle --style=gnu --suffix=none %"
-    elseif &filetype == 'py'||&filetype == 'python'
-        exec "r !autopep8 -i --aggressive %"
-    elseif &filetype == 'java'
-        exec "!astyle --style=java --suffix=none %"
-    elseif &filetype == 'jsp'
-        exec "!astyle --style=gnu --suffix=none %"
-    elseif &filetype == 'xml'
-        exec "!astyle --style=gnu --suffix=none %"
-    else
-        exec "normal gg=G"
-        return
-    endif
-    exec "e! %"
-endfunc
-"结束定义FormartSrc
-
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 ""实用设置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -318,10 +200,6 @@ if has("autocmd")
                 \   exe "normal g`\"" |
                 \ endif
 endif
-"当打开vim且没有文件时自动打开NERDTree
-autocmd vimenter * if !argc() | NERDTree | endif
-" 只剩 NERDTree时自动关闭
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " 设置当文件被改动时自动载入
 set autoread
@@ -340,9 +218,7 @@ set cursorline              " 突出显示当前行
 set magic                   " 设置魔术
 set guioptions-=T           " 隐藏工具栏
 set guioptions-=m           " 隐藏菜单栏
-""set foldcolumn=0
 set foldmethod=indent 
-""set foldlevel=3 
 " 不要使用vi的键盘模式，而是vim自己的
 set nocompatible
 " 去掉输入错误的提示声音
@@ -354,9 +230,6 @@ set nobackup
 set noswapfile
 "搜索忽略大小写
 set ignorecase
-
-
-
 
 set linespace=0
 " 增强模式中的命令行自动完成操作
@@ -398,43 +271,11 @@ function! ClosePair(char)
 		return a:char
 	endif
 endfunction
+
 filetype plugin indent on 
 "打开文件类型检测, 加了这句才可以用智能补全
 set completeopt=longest,menu
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CTags的设定  
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let Tlist_Sort_Type = "name"    " 按照名称排序  
-let Tlist_Use_Right_Window = 1  " 在右侧显示窗口  
-let Tlist_Compart_Format = 1    " 压缩方式  
-let Tlist_Exist_OnlyWindow = 1  " 如果只有一个buffer，kill窗口也kill掉buffer  
-""let Tlist_File_Fold_Auto_Close = 0  " 不要关闭其他文件的tags  
-""let Tlist_Enable_Fold_Column = 0    " 不要显示折叠树  
-"let Tlist_Show_One_File=1            "不同时显示多个文件的tag，只显示当前文件的
-"设置tags  
-set tags=tags;  
-set autochdir 
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"其他东东
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"默认打开Taglist 
-let Tlist_Auto_Open=0 
-"""""""""""""""""""""""""""""" 
-" Tag list (ctags) 
-"""""""""""""""""""""""""""""""" 
-let Tlist_Ctags_Cmd = '/usr/local/bin/ctags' 
-let Tlist_Show_One_File = 1 "不同时显示多个文件的tag，只显示当前文件的 
-let Tlist_File_Fold_Auto_Close = 1
-let Tlist_Exit_OnlyWindow = 1 "如果taglist窗口是最后一个窗口，则退出vim 
-let Tlist_Use_Right_Window = 1 "在右侧窗口中显示taglist窗口
-" minibufexpl插件的一般设置
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1  
-nmap tl :Tlist<cr>
 
 "python补全
     let g:pydiction_location = '~/.vim/after/complete-dict'
@@ -453,42 +294,12 @@ set fileencodings=utf8,ucs-bom,gbk,cp936,gb2312,gb18030
 
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 
-
-
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 
 filetype plugin indent on     " required!
 "
-"ctrlp设置
-"
-    set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.png,*.jpg,*.gif     " MacOSX/Linux
-    set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.pyc,*.png,*.jpg,*.gif  " Windows
-    
-    let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-    let g:ctrlp_custom_ignore = '\v\.(exe|so|dll)$'
-    let g:ctrlp_extensions = ['funky']
-    
-    let NERDTreeIgnore=['\.pyc']
-    """""""""""""""""""""""""""""""""""""""""""""""""""""""
-    " Load a random theme every time you load VIM
-    ""function! PickRandomTheme()
-    ""lua <<EOF
-    ""  math.randomseed(os.time())
-    ""  local themes = {'256-jungle','colorful256','tomatosoup','blacklight','lilydjwg_dark','turbo','candycode'}
-    ""  local theme = string.format('color %s', themes[math.random(1,#themes)])
-    ""vim.command(theme)
-    ""EOF
-    ""endfunction
-    ""set background=dark t_Co=256
-    ""syntax on
-    ""if has('lua')
-    ""  call PickRandomTheme()
-    ""else
-    ""  color railscasts
-    ""end
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 关闭各种按键叮叮声音和闪屏
 set vb t_vb=
 au GuiEnter * set t_vb=
@@ -606,3 +417,25 @@ au GuiEnter * set t_vb=
     " <Leader>cu uncomment
     " <Leader>cA comment Adds comment delimiters to the end of line and goes into insert mode between them.
 " end scrooloose/nerdcommenter config
+"
+" start danro/rename.vim config
+    " Usgae Rename [new name]
+" end danro/rename.vim config
+"
+" start Plugin 'mzlogin/vim-markdown-toc'
+    " 生成markdown目录的插件
+    " Usage
+    " :GenTocGFM
+" end Plugin 'mzlogin/vim-markdown-toc'
+"
+" start Plugin 'aperezdc/vim-template'
+    " 新建文件使用模板插件
+" end Plugin 'aperezdc/vim-template'
+"
+" start Plugin 'pseewald/AnyFold'
+    " 折叠插件
+filetype plugin indent on
+syntax on
+let anyfold_activate=1
+set foldlevel=4
+" end Plugin 'pseewald/AnyFold'
