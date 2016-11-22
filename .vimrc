@@ -12,6 +12,8 @@
     " All fold open when opening a file"
     :autocmd BufRead,BufNewFile *.h,*.c,*.cpp,*.java,*.html,*.cs,*.js normal zR
     map <Leader>r :SyntasticReset<CR>
+    let java_highlight_functions = 1
+    let OPTION_NAME = 1 " 高亮python
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " start Vundle config"
@@ -23,6 +25,7 @@
     set rtp+=~/.vim/bundle/Vundle.vim
     call vundle#begin()
     " Plugin 'Valloric/YouCompleteMe'
+    " Plugin 'vim-scripts/Pydiction' vundle 不支持，手动安装
     Plugin 'pseewald/AnyFold'
     Plugin 'aperezdc/vim-template'
     Plugin 'mzlogin/vim-markdown-toc'
@@ -58,6 +61,7 @@ au FileType javascript setlocal dict+=~/.vim/dict/javascript.dict
 au FileType html setlocal dict+=~/.vim/dict/javascript.dict
 au FileType html setlocal dict+=~/.vim/dict/css.dict
 au FileType java setlocal dict+=~/.vim/dict/java.dict
+au FileType python setlocal dict+=~/.vim/dict/python.dict
 
 "
 "syntastic相关
@@ -442,3 +446,12 @@ syntax on
 let anyfold_activate=1
 set foldlevel=4
 " end Plugin 'pseewald/AnyFold'
+" start Plugin 'vim-scripts/Pydiction' vundle 不支持，手动安装
+    " 按Tab直接补全
+    "python pydiction.py <module> [<module> ...] [-v] 生成字典
+    "./pydiction.py myFoo 把myFoo里的函数名加到字典complete-dict 
+    "<ESC> or CTRL-E       Close the menu and do not accept any match.
+    "" Remap snipmate's trigger key from tab to <C-J> 修改快捷键
+    ""imap <C-J> <Plug>snipMateNextOrTrigger
+    ""smap <C-J> <Plug>snipMateNextOrTrigger
+" end Plugin 'vim-scripts/Pydiction' vundle 不支持，手动安装

@@ -1496,6 +1496,7 @@ GridLayout
 Group
 Guard
 GuardedObject
+hasMoreElements
 HOLDING
 HSBChangeListener
 HSBtoRGB
@@ -4641,6 +4642,7 @@ dropActionChanged
 dropComplete
 dump
 dumpStack
+elements
 earchCompleteStop
 echoCharIsSet
 editCellAt

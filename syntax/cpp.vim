@@ -47,6 +47,7 @@ syntax match mygroup /\./
 syntax match mygroup /==/
 syntax match mygroup /!/
 syntax match mygroup /&/
+syntax match mygroup /\//
 syntax match mygroup /||/
 hi mygroup ctermfg=196 ctermbg=235
 hi Function ctermfg=201 ctermbg=235
