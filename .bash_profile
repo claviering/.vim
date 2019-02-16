@@ -59,11 +59,15 @@ alias jc='javac'
 alias c1='cd ..'
 alias c2='cd ../..'
 alias c3='cd ../../..'
+alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
 export PATH=/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin:$PATH
 export PATH=~/Documents/mongodb/bin:$PATH
 export PATH=~/Documents/openssl-1-1-1/bin:$PATH
 export PATH=~/Documents/seleniumDriver:$PATH
 export PATH=~/Documents/flutter/bin:$PATH
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home
 export CLICOLOR=1
 export LSCOLORS=Exfxcxdxbxegedabagacad
 eval "$(pyenv init -)"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
